@@ -99,6 +99,36 @@ app.post('/music', (req, res) => {
   })
 })
 
+app.post('/signup', (req, res) => {
+  const sql = "INSERT into customerLogin (`email`, `username`, `password`) VALUES (?)";
+  const values = [
+    req.body.email,
+    req.body.username,
+    req.body.password
+  ]
+  
+  connection.query(sql, [values], (err, data) => {
+    if(err){
+      return res.json("Error");
+    }
+    return res.json(data);
+  })
+})
+
+app.post('/login', (req, res) => {
+  const sql = "SELECT * FROM customerLogin WHERE `username` = ? AND `password` = ?";
+  connection.query(sql,[req.body.username, req.body.password], (err, data)=> {
+            if(err) {
+              return res.json("Error");
+            }
+            if(data.length > 0) {
+              return res.json("Success");
+            } else {
+              return res.json("Failes");
+            } 
+        })
+});
+
 app.listen(1027, ()=>{
   console.log("listening");
 })
