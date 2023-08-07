@@ -7,6 +7,7 @@ function homePage() {
     <Link to={"/music"} ><input type="button" value={"Music"}></input></Link>
     <Link to={"/movie"} ><input type="button" value={"Movie"}></input></Link>
     <Link to={"/videogame"} ><input type="button" value={"Video Game"}></input></Link>
+    <Link to={"/table"} ><input type="button" value={"Table"}></input></Link>
     <Outlet/>
     </>
     )

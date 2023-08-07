@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, TextInput,StyleSheet, Button} from 'react-native';
+import { View, Text,TextInput,StyleSheet,Button} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Login from './Screens/loginScreen.js'
+import Login from './Screens/loginScreen.js';
 import Signup from './Screens/signupScreen.js';
 
 function Homepage ({navigation}) {

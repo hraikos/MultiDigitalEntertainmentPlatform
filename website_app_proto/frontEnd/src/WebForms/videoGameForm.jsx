@@ -17,9 +17,31 @@ function videoGameFrom() {
 
       const submit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:1027/videogame", values)
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+        if(values.author)
+        {
+          alert('Empty value');
+        }
+        else if(values.description == '')
+        {
+          alert('Empty value');
+        }
+        else if(values.genre == '') 
+        {
+          alert('Empty value');
+        }
+        else if(values.name == '')
+        {
+          alert('Empty value');
+        }
+        else if(values.price == '')
+        {
+          alert('Empty value');
+        }
+        else
+        {
+          axios.post("http://localhost:1027/videogame", values)
+          alert('Form sent successfully');
+        }
       }
 
     return(

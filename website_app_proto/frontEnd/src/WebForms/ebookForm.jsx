@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
 
+
 function ebookForm() {
 
     const [values, setValues] = useState({
@@ -18,9 +19,31 @@ function ebookForm() {
 
       const submit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:1027/ebook", values)
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+        if(values.author == '')
+        {
+          alert('Empty value');
+        }
+        else if(values.description == '')
+        {
+          alert('Empty value');
+        }
+        else if(values.genre == '') 
+        {
+          alert('Empty value');
+        }
+        else if(values.name == '')
+        {
+          alert('Empty value');
+        }
+        else if(values.price == '')
+        {
+          alert('Empty value');
+        }
+        else
+        {
+          axios.post("http://localhost:1027/ebook", values)
+          alert('Form sent successfully');
+        }
       }
 
     return(

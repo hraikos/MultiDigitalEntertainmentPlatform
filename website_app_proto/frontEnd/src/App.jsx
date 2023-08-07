@@ -5,6 +5,7 @@ import videoGamePage from './WebForms/videoGameForm'
 import musicPage from './WebForms/musicForm'
 import moviePage from './WebForms/movieForm'
 import Login from './login'
+import table from './WebForms/table'
 function App() {
 
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="music" element={musicPage()} />
           <Route path="movie" element={moviePage()} />
           <Route path="videogame" element={videoGamePage()} />
+          <Route path='table' element={table()}/>
       </Routes>
   )
 

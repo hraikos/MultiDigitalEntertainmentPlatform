@@ -11,15 +11,25 @@ function Signup({navigation}) {
   
     const signup = async (e) => {
       e.preventDefault();
-      axios.post('http://10.200.1.100:1027/signup', values)
+      if(values.username == '')
+      {
+        alert("not valid")
+      } else if(values.password == '')
+      {
+        alert("not valid")
+      }else if(values.email == '')
+      {
+        alert("not valid")
+      }else
+      {
+        axios.post('http://10.200.1.100:1027/signup', values)
+      }
     }
-  
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Signup</Text>
         <TextInput style={styles.input} 
         onChangeText={InputEmail => setValues(prev => ({...prev, email:InputEmail}))}
-        
         placeholder="email"/>
         <TextInput style={styles.input}
         onChangeText={InputUsername => setValues( prev => ({...prev, username:InputUsername}))}

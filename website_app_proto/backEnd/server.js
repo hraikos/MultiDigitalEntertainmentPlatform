@@ -22,7 +22,7 @@ app.post('/employee_login_information', (req, res) => {
             if(data.length > 0) {
               return res.json("Success");
             } else {
-              return res.json("Failes");
+              return res.json("Failed");
             } 
         })
 });
@@ -127,6 +127,16 @@ app.post('/login', (req, res) => {
               return res.json("Failes");
             } 
         })
+});
+
+app.get('/getEbook', (req, res) => {
+  const sql = "SELECT * FROM ebook";
+  connection.query(sql,(err, data)=> {
+    if(err) {
+      return res.json("Error");
+    }
+    return res.json(data);
+  })
 });
 
 app.listen(1027, ()=>{

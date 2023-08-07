@@ -11,16 +11,25 @@ function Login({ navigation }) {
   
     const login = async (e) => {
       e.preventDefault();
-      axios.post('http://10.200.1.100:1027/login', values)
-      .then(res => {
-        if(res.data === "Success") {
-          navigation.navigate('Homepage')
-        } else {
-          alert("invalid username or password");
-        }
-      })
+      if(values.username == '')
+      {
+        alert("not a valid request")
+      }else if(values.password == '')
+      {
+        alert("not a valid request")
+      } else 
+      {
+        axios.post('http://10.200.1.100:1027/login', values)
+        .then(res => {
+          if(res.data === "Success") {
+            navigation.navigate('Homepage')
+          } else {
+            alert("invalid username or password");
+          }
+        })
+      }
     }
-  
+
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Login</Text>
