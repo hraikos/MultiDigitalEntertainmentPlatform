@@ -11,13 +11,20 @@ function movieForm() {
         price:''
       })
 
+      const [data, setData] = useState([]);
+
+      useEffect(() => {
+        axios.get("http://localhost:1027/getMovie")
+        .then(data => setData(data.data));
+    },[])
+
       const handleInput = (event) => {
         setValues(prev => ({...prev, [event. target .name ]: [event. target . value]}))
       }
 
       const submit = (e) => {
         e.preventDefault();
-        if(values.author)
+        if(values.author == '')
         {
           alert('Empty value');
         }
@@ -47,6 +54,30 @@ function movieForm() {
     return(
     <>
     <h1>Movie Page</h1>
+    <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Author</th>
+                        <th>Genre</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {data.map(item => (
+                        <tr>
+                            <td>{item.name}</td>
+                            <td>{item.author}</td>
+                            <td>{item.genre}</td>
+                            <td>{item.description}</td>
+                            <td>{item.price}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
     <form action="" onSubmit={submit}>
     <input type='text' placeholder='enter a name' onChange={handleInput} name ='name'/>
       <br/>

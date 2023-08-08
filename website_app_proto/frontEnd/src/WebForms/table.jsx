@@ -6,17 +6,17 @@ function table() {
     const [values, setValues] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:1027/getEbook")
+        axios.get("http://localhost:1027/getinquiry")
         .then(data => setValues(data.data));
     },[])
-    console.log(values)
     return (
         <>
+        <h1>Customer Product Request</h1>
         <div>
             <table>
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th>Product Type</th>
                         <th>Name</th>
                         <th>Author</th>
                         <th>Genre</th>
@@ -27,7 +27,7 @@ function table() {
                 <tbody>
                     {values.map(item => (
                         <tr>
-                            <td>{item.id}</td>
+                            <td>{item.productType}</td>
                             <td>{item.name}</td>
                             <td>{item.author}</td>
                             <td>{item.genre}</td>
@@ -38,6 +38,7 @@ function table() {
                 </tbody>
             </table>
         </div>
+        <Link to={"/homepage"}> <input type="button" value={"Back"}/></Link>
         </>
     );
 }

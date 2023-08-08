@@ -22,7 +22,7 @@ function Login({ navigation }) {
         axios.post('http://10.200.1.100:1027/login', values)
         .then(res => {
           if(res.data === "Success") {
-            navigation.navigate('Homepage')
+            navigation.navigate('MainPage')
           } else {
             alert("invalid username or password");
           }

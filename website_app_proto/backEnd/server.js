@@ -129,8 +129,66 @@ app.post('/login', (req, res) => {
         })
 });
 
+app.post('/inquiry', (req, res) => {
+  const sql = "INSERT into inquiry (`productType`, `name`, `author`, `genre`, `description`, `price`) VALUES (?)";
+  const values = [
+    req.body.productType,
+    req.body.name,
+    req.body.author,
+    req.body.genre,
+    req.body.description,
+    req.body.price
+  ]
+  connection.query(sql, [values], (err, data) => {
+    if(err){
+      return res.json("Error");
+    }
+    return res.json(data);
+  })
+});
+
 app.get('/getEbook', (req, res) => {
   const sql = "SELECT * FROM ebook";
+  connection.query(sql,(err, data)=> {
+    if(err) {
+      return res.json("Error");
+    }
+    return res.json(data);
+  })
+});
+
+app.get('/getMovie', (req, res) => {
+  const sql = "SELECT * FROM movie";
+  connection.query(sql,(err, data)=> {
+    if(err) {
+      return res.json("Error");
+    }
+    return res.json(data);
+  })
+});
+
+app.get('/getVideoGame', (req, res) => {
+  const sql = "SELECT * FROM videogame";
+  connection.query(sql,(err, data)=> {
+    if(err) {
+      return res.json("Error");
+    }
+    return res.json(data);
+  })
+});
+
+app.get('/getMusic', (req, res) => {
+  const sql = "SELECT * FROM music";
+  connection.query(sql,(err, data)=> {
+    if(err) {
+      return res.json("Error");
+    }
+    return res.json(data);
+  })
+});
+
+app.get('/getInquiry', (req, res) => {
+  const sql = "SELECT * FROM customerProductRequest";
   connection.query(sql,(err, data)=> {
     if(err) {
       return res.json("Error");

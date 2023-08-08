@@ -23,6 +23,7 @@ function Signup({navigation}) {
       }else
       {
         axios.post('http://10.200.1.100:1027/signup', values)
+        alert('created account')
       }
     }
     return (
